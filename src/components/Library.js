@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../App.css';
+import BookshelfComponent from "./BookshelfComponent";
 
 class Library extends Component {
 
@@ -10,6 +11,19 @@ class Library extends Component {
                     <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
+                    <BookshelfComponent
+                        booksFiltered={this.props.books.filter((b) => b.shelf === 'currentlyReading')}
+                        title={'Currently Reading'}
+                    />
+                    <BookshelfComponent
+                        booksFiltered={this.props.books.filter((b) => b.shelf === 'read')}
+                        title={'Read'}
+                    />
+
+                    <BookshelfComponent
+                        booksFiltered={this.props.books.filter((b) => b.shelf === 'currentlyReading')}
+                        title={'Want To Read'}
+                    />
 
                 </div>
                 <div className="open-search">

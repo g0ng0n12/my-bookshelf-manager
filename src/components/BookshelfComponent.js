@@ -2,19 +2,17 @@ import React from 'react';
 import '../App.css';
 import BookComponent from "./BookComponent";
 
-function BookshelfComponent() {
-
+function BookshelfComponent({title, booksFiltered}) {
     return(
         <div className="bookshelf">
-            <h2 className="bookshelf-title">Currently Reading</h2>
+            <h2 className="bookshelf-title">{title}</h2>
             <div className="bookshelf-books">
                 <ol className="books-grid">
-                    <li>
-                        <BookComponent />
-                    </li>
-                    <li>
-
-                    </li>
+                    {booksFiltered.map((book) => (
+                        <li key={book.id}>
+                            <BookComponent book={book}/>
+                        </li>
+                    ))}
                 </ol>
             </div>
         </div>
