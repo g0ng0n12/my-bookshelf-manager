@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import SearchBarComponent from "./components/SearchBarComponent";
 import Library from "./components/Library";
 
@@ -12,7 +11,7 @@ class MyReadApp extends Component{
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false
-  }
+  };
 
   render(){
     return (
