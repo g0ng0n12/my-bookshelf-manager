@@ -27,7 +27,7 @@ class Library extends Component {
 
                 </div>
                 <div className="open-search">
-                    <a onClick={() => this.setState({showSearchPage: true})}>Add a book</a>
+                    <a onClick={this.props.openSearch}>Add a book</a>
                 </div>
             </div>
         );

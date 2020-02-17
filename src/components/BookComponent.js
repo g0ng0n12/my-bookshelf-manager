@@ -2,7 +2,6 @@ import React from 'react';
 import '../App.css';
 
 function BookComponent({book}) {
-    console.log(book)
     return(
         <div className="book">
             <div className="book-top">

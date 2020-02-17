@@ -15,6 +15,14 @@ class MyReadApp extends Component {
         books: []
     };
 
+    constructor(props){
+        super();
+
+        this.openSearch = this.openSearch.bind(this);
+        this.closeSearch = this.closeSearch.bind(this);
+
+    }
+
     componentDidMount() {
         getAll()
             .then((books) => {
@@ -24,15 +32,27 @@ class MyReadApp extends Component {
             });
     }
 
+    openSearch() {
+        this.setState({
+            showSearchPage: !this.state.showSearchPage
+        })
+    }
+    closeSearch() {
+        this.setState({
+            showSearchPage: !this.state.showSearchPage
+        })
+    }
+
+
     render() {
 
         let { books } = this.state;
         return (
             <div className="App">
                 {this.state.showSearchPage ? (
-                    <SearchBarComponent/>
+                    <SearchBarComponent closeSearch={this.closeSearch}/>
                 ) : (
-                    <Library books={books}/>
+                    <Library books={books} openSearch={this.openSearch}/>
                 )
                 }
             </div>
