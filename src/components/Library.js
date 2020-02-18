@@ -14,15 +14,18 @@ class Library extends Component {
                     <BookshelfComponent
                         booksFiltered={this.props.books.filter((b) => b.shelf === 'currentlyReading')}
                         title={'Currently Reading'}
+                        handleBookShelfChange={this.props.handleBookShelfChange}
                     />
                     <BookshelfComponent
                         booksFiltered={this.props.books.filter((b) => b.shelf === 'read')}
                         title={'Read'}
+                        handleBookShelfChange={this.props.handleBookShelfChange}
                     />
 
                     <BookshelfComponent
-                        booksFiltered={this.props.books.filter((b) => b.shelf === 'currentlyReading')}
+                        booksFiltered={this.props.books.filter((b) => b.shelf === 'wantToRead')}
                         title={'Want To Read'}
+                        handleBookShelfChange={this.props.handleBookShelfChange}
                     />
 
                 </div>

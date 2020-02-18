@@ -20,17 +20,22 @@ class MyReadApp extends Component {
 
         this.openSearch = this.openSearch.bind(this);
         this.closeSearch = this.closeSearch.bind(this);
-
+        this.handleBookShelfChange = this.handleBookShelfChange.bind(this);
+        this.getAllBooks = this.getAllBooks.bind(this);
     }
 
     componentDidMount() {
+        this.getAllBooks();
+    }
+
+    getAllBooks = () =>{
         getAll()
             .then((books) => {
                 this.setState(() => ({
                     books
                 }))
             });
-    }
+    };
 
     openSearch() {
         this.setState({
@@ -42,6 +47,12 @@ class MyReadApp extends Component {
             showSearchPage: !this.state.showSearchPage
         })
     }
+    handleBookShelfChange(event, book ){
+        update(book, event.target.value)
+            .then(() => {
+                this.getAllBooks()
+            });
+    }
 
 
     render() {
@@ -52,7 +63,9 @@ class MyReadApp extends Component {
                 {this.state.showSearchPage ? (
                     <SearchBarComponent closeSearch={this.closeSearch}/>
                 ) : (
-                    <Library books={books} openSearch={this.openSearch}/>
+                    <Library books={books}
+                             openSearch={this.openSearch}
+                             handleBookShelfChange={this.handleBookShelfChange}/>
                 )
                 }
             </div>

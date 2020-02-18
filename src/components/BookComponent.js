@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 
-function BookComponent({book}) {
+function BookComponent({book, handleBookShelfChange}) {
     return(
         <div className="book">
             <div className="book-top">
@@ -11,7 +11,7 @@ function BookComponent({book}) {
                     backgroundImage: `url(${book.imageLinks.smallThumbnail})`
                 }}></div>
                 <div className="book-shelf-changer">
-                    <select>
+                    <select value={book.shelf} onChange={event => handleBookShelfChange(event, book)}>
                         <option value="move" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
