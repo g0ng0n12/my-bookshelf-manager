@@ -2,9 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import MyReadApp from './App';
+import { BrowserRouter } from 'react-router-dom';
+
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<MyReadApp />, document.getElementById('root'));
+ReactDOM.render(
+    <BrowserRouter>
+        <MyReadApp />
+    </BrowserRouter>
+    , document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

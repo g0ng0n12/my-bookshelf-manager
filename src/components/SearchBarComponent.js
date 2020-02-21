@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
+import BookShelfSearch from "./BookshelfSearch";
+import {Link} from 'react-router-dom';
 
 class SearchBarComponent extends Component {
-
     render() {
         return (
             <div className="search-books">
                 <div className="search-books-bar">
-                    <a className="close-search" onClick={this.props.closeSearch}>Close</a>
+                    <Link to="/" className="close-search">Close
+                    </Link>
                     <div className="search-books-input-wrapper">
                         {/*
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -16,12 +18,18 @@ class SearchBarComponent extends Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                        <input type="text" placeholder="Search by title or author"/>
+                        <input type="text"
+                               placeholder="Search by title or author"
+                               onChange={ e => this.props.searchBook(e.target.value)}/>
 
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <ol className="books-grid"></ol>
+                    <BookShelfSearch
+                        books_search={this.props.books_search}
+                        books={this.props.books}
+                        handleBookShelfChange={this.props.handleBookShelfChange}
+                    />
                 </div>
             </div>
         );
