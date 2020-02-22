@@ -31,9 +31,9 @@ class MyReadApp extends Component {
                 .then((books) => {
                     if (books !== undefined && books.length > 0) {
                         this.setState({ books_search: this.verifyBooks(books) });
+                    }else{
+                        this.setState({ books_search: []})
                     }
-                }).catch(books => {
-                    console.log(books)
                 })
         }else{
             this.setState({ books_search: []});
